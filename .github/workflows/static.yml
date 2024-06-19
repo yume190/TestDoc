@@ -34,15 +34,22 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: build
-        run: |
-          $(xcrun --find docc) convert \
-            --hosting-base-path /TestDoc \
-            --output-path Guide.doccarchive \
-            GuideZh.docc
-          $(xcrun --find docc) process-archive transform-for-static-hosting Guide.doccarchive \
-            --hosting-base-path /TestDoc \
-            --output-path dist
+      - name: DocC
+        uses: yume190/ActionDocC@0.0.1
+        with:
+          host: /TestDoc
+          docc: GuideZh.docc
+          output: dist
+
+      # - name: build
+      #   run: |
+      #     $(xcrun --find docc) convert \
+      #       --hosting-base-path /TestDoc \
+      #       --output-path Guide.doccarchive \
+      #       GuideZh.docc
+      #     $(xcrun --find docc) process-archive transform-for-static-hosting Guide.doccarchive \
+      #       --hosting-base-path /TestDoc \
+      #       --output-path dist
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
