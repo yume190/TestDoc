@@ -38,8 +38,8 @@ jobs:
         run: |
           $(xcrun --find docc) convert \
             --hosting-base-path /TestDoc \
-            --output-path GuideZh.doccarchive \
-            Guide.docc
+            --output-path Guide.doccarchive \
+            GuideZh.docc
           $(xcrun --find docc) process-archive transform-for-static-hosting Guide.doccarchive \
             --hosting-base-path /TestDoc \
             --output-path dist
