@@ -35,7 +35,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: DocC
-        uses: yume190/ActionDocC@0.0.1
+        uses: yume190/ActionDocC@0.0.2
         with:
           host: /TestDoc
           docc: GuideZh.docc
