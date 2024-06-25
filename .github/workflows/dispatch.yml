@@ -12,5 +12,5 @@ jobs:
     steps:
     - name: Run a script
       env:
-        URL: ${{ github.event.payload.url }}
+        URL: ${{ github.event.client_payload.url }}
       run: echo "clone $URL"
