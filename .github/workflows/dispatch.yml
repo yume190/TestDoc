@@ -28,7 +28,9 @@ jobs:
         git clone https://github.com/apple/swift-argument-parser
     - name: build swift
       run: |
-        cd swift-argument-parser 
+        cd swift-argument-parser
+        pwd
+        ls -al
         $(xcrun --find swift) build \
             --target ArgumentParser \
             -Xswiftc -emit-symbol-graph \
