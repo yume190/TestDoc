@@ -48,10 +48,15 @@ jobs:
           Sources/ArgumentParser/Documentation.docc
     - name: archive docc
       run: |
-        cd swift-argument-parser 
+        cd swift-argument-parser
         $(xcrun --find docc) process-archive transform-for-static-hosting Target.doccarchive \
             --output-path dist
+
+    - name: archive
+      run: |
+        cd swift-argument-parser
+        tar zcvf dist.tar.gz dist
     - uses: actions/upload-artifact@v4
       name: upload artifact
       with:
-        path: swift-argument-parser/dist
+        path: swift-argument-parser/dist.tar.gz
