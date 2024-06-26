@@ -31,6 +31,7 @@ jobs:
         cd swift-argument-parser
         pwd
         ls -al
+        sudo xcode-select --switch /Applications/Xcode_15.4.app
         swift --version
         $(xcrun --find swift) build \
             --package-path . \
