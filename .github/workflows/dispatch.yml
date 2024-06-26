@@ -14,3 +14,22 @@ jobs:
       env:
         URL: ${{ github.event.client_payload.url }}
       run: echo "clone $URL"
+    - name: docc
+      run: |
+        git clone https://github.com/apple/swift-argument-parser && \
+        cd swift-argument-parser && \
+        swift build \
+            --target ArgumentParser \
+            -Xswiftc -emit-symbol-graph \
+            -Xswiftc -emit-symbol-graph-dir \
+            -Xswiftc .build/symbol-graphs && \
+        $(xcrun --find docc) convert \
+          --additional-symbol-graph-dir .build/symbol-graphs \
+          --output-path Target.doccarchive \
+          Sources/ArgumentParser/Documentation.docc && \
+        $(xcrun --find docc) process-archive transform-for-static-hosting Target.doccarchive \
+            --output-path dist
+    - uses: actions/upload-artifact@v4
+      name: upload artifact
+      with:
+        path: swift-argument-parser/dist
