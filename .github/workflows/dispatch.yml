@@ -29,7 +29,7 @@ jobs:
     - name: build swift
       run: |
         cd swift-argument-parser 
-        swift build \
+        $(xcrun --find swift) build \
             --target ArgumentParser \
             -Xswiftc -emit-symbol-graph \
             -Xswiftc -emit-symbol-graph-dir \
