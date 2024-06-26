@@ -31,6 +31,7 @@ jobs:
         cd swift-argument-parser
         pwd
         ls -al
+        swift --version
         $(xcrun --find swift) build \
             --package-path . \
             --target ArgumentParser \
