@@ -35,7 +35,7 @@ jobs:
 
     - name: build swift
       run: |
-        .buildDocc \
+        ./buildDocc \
           --repo $REPO \
           --path $(basename $REPO .git) \
           --tag $TAG \
