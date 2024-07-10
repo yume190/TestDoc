@@ -31,12 +31,12 @@ jobs:
 
     - name: Clone Repo
       run: |
-        git clone --depth 1 --branch ${{TAG}} ${{REPO}}
+        git clone --depth 1 --branch $TAG $REPO
 
     - name: build swift
       run: |
         .buildDocc \
-          --repo ${{REPO}} \
+          --repo $REPO \
           --path $(basename $REPO .git) \
-          --tag ${{TAG}} \
-          --token ${{TOKEN}}
+          --tag $TAG \
+          --token $TOKEN
